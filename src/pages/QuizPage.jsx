@@ -49,7 +49,7 @@ export default function QuizPage() {
             }
         };
         const storedQuestions = JSON.parse(
-            localStorage.getItem("questionsData") ?? "null"
+            localStorage.getItem("questionsData") ?? "[]"
         );
 
         if (!storedQuestions) {
