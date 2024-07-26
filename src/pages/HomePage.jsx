@@ -12,7 +12,7 @@ const HomePage = () => {
     const navigate = useNavigate();
 
     const handleStartQuiz = () => {
-        navigate("./quiz");
+        navigate("./quiz", { state: { difficulty, topic, questionCount } });
     };
 
     return (

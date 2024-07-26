@@ -56,7 +56,19 @@ function App() {
                         />
                     }
                 />
-                <Route path="/quiz" element={<QuizPage />} />
+                <Route
+                    path="/quiz"
+                    element={
+                        <QuizPage
+                            difficulty={difficulty}
+                            topic={topic}
+                            questionCount={questionCount}
+                            setDifficulty={setDifficulty}
+                            setTopic={setTopic}
+                            setQuestionCount={setQuestionCount}
+                        />
+                    }
+                />
             </Routes>
         </Router>
     );
