@@ -35,43 +35,43 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import QuizPage from "./pages/QuizPage";
 
-function App() {
-    const [difficulty, setDifficulty] = useState("");
-    const [topic, setTopic] = useState("");
-    const [questionCount, setQuestionCount] = useState(0);
+const o = {
+  currentIndex: 0,
+  questions: [
+    {
+      selectedAnswer: null,
+    },
+    {
+      selectedAnswer: null,
+    },
+    {},
+  ],
+  questionCount: 0,
+  difficulty: "",
+  topic: "",
+};
 
-    return (
-        <Router>
-            <Routes>
-                <Route
-                    path="/"
-                    element={
-                        <HomePage
-                            difficulty={difficulty}
-                            topic={topic}
-                            questionCount={questionCount}
-                            setDifficulty={setDifficulty}
-                            setTopic={setTopic}
-                            setQuestionCount={setQuestionCount}
-                        />
-                    }
-                />
-                <Route
-                    path="/quiz"
-                    element={
-                        <QuizPage
-                            difficulty={difficulty}
-                            topic={topic}
-                            questionCount={questionCount}
-                            setDifficulty={setDifficulty}
-                            setTopic={setTopic}
-                            setQuestionCount={setQuestionCount}
-                        />
-                    }
-                />
-            </Routes>
-        </Router>
-    );
+function App() {
+  //   const [difficulty, setDifficulty] = useState("");
+  //   const [topic, setTopic] = useState("");
+  //   const [questionCount, setQuestionCount] = useState(0);
+
+  const [bigState, setBigState] = useState(o);
+
+  return (
+    <Router>
+      <Routes>
+        <Route
+          path="/"
+          element={<HomePage bigState={bigState} setBigState={setBigState} />}
+        />
+        <Route
+          path="/quiz"
+          element={<QuizPage bigState={bigState} setBigState={setBigState} />}
+        />
+      </Routes>
+    </Router>
+  );
 }
 
 export default App;
