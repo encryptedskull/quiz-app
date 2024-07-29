@@ -9,8 +9,13 @@ const HomePage = ({ bigState, setBigState }) => {
 
   const navigate = useNavigate();
 
-  const handleStartQuiz = () => {
-    navigate("./quiz", { state: { difficulty, topic, questionCount } });
+  const handleGetQuiz = () => {
+    navigate("./get");
+
+    setBigState((prev) => ({
+      ...structuredClone(prev),
+      getData: true,
+    }));
   };
 
   return (
@@ -32,9 +37,9 @@ const HomePage = ({ bigState, setBigState }) => {
           </div>
         </div>
         <div className="flex flex-col items-start">
-          <TopicSelector  setBigState={setBigState}/>
-          <DifficultySelector setBigState={setBigState} />
-          <QuestionSelector setBigState={setBigState} />
+          <TopicSelector setBigState={setBigState} />
+          {/* <DifficultySelector setBigState={setBigState} /> */}
+          {/* <QuestionSelector setBigState={setBigState} /> */}
         </div>
         <div className="bg-gray-700 p-4 mt-8 rounded w-full max-w-2xl flex items-center justify-between ">
           <div className="text-white">
@@ -42,12 +47,14 @@ const HomePage = ({ bigState, setBigState }) => {
             <p>Topic: {topic}</p>
             <p>Number of Questions: {questionCount}</p>
           </div>
-          <button
-            onClick={handleStartQuiz}
-            className="bg-blue-500 text-white py-2 px-4 m-2 rounded"
-          >
-            Start Quiz
-          </button>
+          {topic && difficulty && questionCount ? (
+            <button
+              onClick={handleGetQuiz}
+              className="bg-blue-500 text-white py-2 px-4 m-2 rounded"
+            >
+              Get Quiz
+            </button>
+          ) : null}
         </div>
       </div>
     </div>

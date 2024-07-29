@@ -34,6 +34,7 @@ import { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import QuizPage from "./pages/QuizPage";
+import GetPage from "./pages/GetPage";
 
 const o = {
   currentIndex: 0,
@@ -49,6 +50,8 @@ const o = {
   questionCount: 0,
   difficulty: "",
   topic: "",
+  getData: false,
+  loaded: false,
 };
 
 function App() {
@@ -64,6 +67,10 @@ function App() {
         <Route
           path="/"
           element={<HomePage bigState={bigState} setBigState={setBigState} />}
+        />
+        <Route
+          path="/get"
+          element={<GetPage bigState={bigState} setBigState={setBigState} />}
         />
         <Route
           path="/quiz"

@@ -1,5 +1,5 @@
 export function formatSeconds(seconds) {
-  const minutes = seconds / 60;
+  const minutes = Math.floor(seconds / 60);
   seconds %= 60;
 
   return `${make2Digits(minutes)}:${make2Digits(seconds)}`;
