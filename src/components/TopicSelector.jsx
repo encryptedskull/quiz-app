@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FaAngleUp, FaAngleDown } from "react-icons/fa";
 
 const TopicSelector = ({ setBigState }) => {
-  const questionArry = ["C++", "JavaScript", "Python", "Machine Learning"];
+  const questionArry = ["C++", "JavaScript", "Python", "Java"];
   const difficulties = ["Easy", "Medium", "Hard", "Expert"];
   const counts = [5, 10, 15, 20];
 
@@ -14,18 +14,126 @@ const TopicSelector = ({ setBigState }) => {
   const [selectedDifficulty, setSelectedDifficulty] = useState(null);
   const [selectedCount, setSelectedCount] = useState(null);
 
+  const formatOption = (option, selectedOption) =>
+    option === selectedOption ? `• ${option}` : option;
+
   return (
-    <div className="bg-slate-50 grid w-800">
-      <div className="grid grid-cols-3 place-content-center gap-5 relative ml-2">
+    // <div className="bg-slate-50 flex justify-center w-full ">
+    //   <div className="grid grid-cols-3 gap-8">
+    //     <div className="relative">
+    //       <button
+    //         onClick={() => setIsTopicOpen((prev) => !prev)}
+    //         className="bg-slate-200 text-black py-2 px-4 m-2 rounded w-full"
+    //       >
+    //         {selectedTopic ? ` ${selectedTopic}` : "Select Topic"}
+    //       </button>
+    //       {isTopicOpen && (
+    //         <div className="absolute top-full  bg-slate-100 text-black py-2 px-4 rounded shadow-md z-10 w-full">
+    //           {questionArry.map((item) => (
+    //             <button
+    //               key={item}
+    //               onClick={() => {
+    //                 setSelectedTopic(item);
+    //                 setBigState((a) => ({
+    //                   ...structuredClone(a),
+    //                   topic: item,
+    //                 }));
+    //                 setIsTopicOpen(false);
+    //               }}
+    //               // className="block text-left py-2 px-4 w-full hover:bg-gray-200"
+    //               className={`block text-left py-2 px-4 w-full hover:bg-gray-200 ${
+    //                 selectedTopic === item
+    //                   ? "dot-before items-right"
+    //                   : "items-right"
+    //               }`}
+    //             >
+    //               {item}
+    //             </button>
+    //           ))}
+    //         </div>
+    //       )}
+    //     </div>
+
+    //     <div className="relative">
+    //       <button
+    //         onClick={() => setIsDifficultyOpen((prev) => !prev)}
+    //         className="bg-slate-200 text-black py-2 px-4 m-2 rounded w-full"
+    //       >
+    //         {selectedDifficulty
+    //           ? ` ${selectedDifficulty}`
+    //           : "Select Difficulty"}
+    //       </button>
+    //       {isDifficultyOpen && (
+    //         <div className="absolute top-full w-full mt-2 bg-slate-100 text-black py-2 px-4 rounded shadow-md z-10">
+    //           {difficulties.map((item) => (
+    //             <button
+    //               key={item}
+    //               onClick={() => {
+    //                 setSelectedDifficulty(item);
+    //                 setBigState((a) => ({
+    //                   ...structuredClone(a),
+    //                   difficulty: item,
+    //                 }));
+    //                 setIsDifficultyOpen(false);
+    //               }}
+    //               // className="block text-left py-2 px-4 w-full  hover:bg-gray-200"
+    //               className={`block text-left py-2 px-4 w-full hover:bg-gray-200 ${
+    //                 selectedDifficulty === item
+    //                   ? "dot-before items-right"
+    //                   : "items-right"
+    //               }`}
+    //             >
+    //               {item}
+    //             </button>
+    //           ))}
+    //         </div>
+    //       )}
+    //     </div>
+
+    //     <div className="relative">
+    //       <button
+    //         onClick={() => setIsCountOpen((prev) => !prev)}
+    //         className="bg-slate-200 text-black py-2 px-4 m-2 rounded w-full"
+    //       >
+    //         {selectedCount ? `${selectedCount}` : "Total Questions"}
+    //       </button>
+    //       {isCountOpen && (
+    //         <div className="absolute top-full mt-2 bg-slate-100 text-black py-2 px-4 rounded shadow-md z-10 w-full">
+    //           {counts.map((item) => (
+    //             <button
+    //               key={item}
+    //               onClick={() => {
+    //                 setSelectedCount(item);
+    //                 setBigState((a) => ({
+    //                   ...structuredClone(a),
+    //                   questionCount: item,
+    //                 }));
+    //                 setIsCountOpen(false);
+    //               }}
+    //               // className="block text-left py-2 px-4 w-full hover:bg-gray-200"
+    //               className={`block text-left py-2 px-4 w-full hover:bg-gray-200 ${
+    //                 counts === item ? "dot-before items-right" : "items-right"
+    //               }`}
+    //             >
+    //               {item}
+    //             </button>
+    //           ))}
+    //         </div>
+    //       )}
+    //     </div>
+    //   </div>
+    // </div>
+    <div className="bg-slate-50 w-full flex justify-center">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 w-full md:w-4/5">
         <div className="relative">
           <button
             onClick={() => setIsTopicOpen((prev) => !prev)}
-            className="bg-slate-200 text-black py-2 px-4 m-2 rounded "
+            className="bg-slate-200 text-black py-2 px-4 m-2 rounded w-full "
           >
-            {selectedTopic ? ` ${selectedTopic}` : "Select Topic"}
+            {selectedTopic ? `${selectedTopic}` : "Select Topic"}
           </button>
           {isTopicOpen && (
-            <div className="absolute top-full  bg-slate-100 text-black py-2 px-4 rounded shadow-md z-10">
+            <div className="absolute top-full bg-slate-100 text-black py-2 px-4 rounded shadow-md z-10 w-full">
               {questionArry.map((item) => (
                 <button
                   key={item}
@@ -37,7 +145,11 @@ const TopicSelector = ({ setBigState }) => {
                     }));
                     setIsTopicOpen(false);
                   }}
-                  className="block text-left py-2 px-4 w-60 hover:bg-gray-200"
+                  className={`block text-left py-2 px-4 w-full hover:bg-gray-200 ${
+                    selectedTopic === item
+                      ? "dot-before items-right"
+                      : "items-right"
+                  }`}
                 >
                   {item}
                 </button>
@@ -49,14 +161,12 @@ const TopicSelector = ({ setBigState }) => {
         <div className="relative">
           <button
             onClick={() => setIsDifficultyOpen((prev) => !prev)}
-            className="bg-slate-200 text-black py-2 px-4 m-2 rounded"
+            className="bg-slate-200 text-black py-2 px-4 m-2 rounded w-full"
           >
-            {selectedDifficulty
-              ? ` ${selectedDifficulty}`
-              : "Select Difficulty"}
+            {selectedDifficulty ? `${selectedDifficulty}` : "Select Difficulty"}
           </button>
           {isDifficultyOpen && (
-            <div className="absolute top-full mt-2 bg-slate-100 text-black py-2 px-4 rounded shadow-md z-10">
+            <div className="absolute top-full bg-slate-100 text-black py-2 px-4 rounded shadow-md z-10 w-full">
               {difficulties.map((item) => (
                 <button
                   key={item}
@@ -68,7 +178,11 @@ const TopicSelector = ({ setBigState }) => {
                     }));
                     setIsDifficultyOpen(false);
                   }}
-                  className="block text-left py-2 px-4 w-60  hover:bg-gray-200"
+                  className={`block text-left py-2 px-4 w-full hover:bg-gray-200 ${
+                    selectedDifficulty === item
+                      ? "dot-before items-right"
+                      : "items-right"
+                  }`}
                 >
                   {item}
                 </button>
@@ -80,12 +194,12 @@ const TopicSelector = ({ setBigState }) => {
         <div className="relative">
           <button
             onClick={() => setIsCountOpen((prev) => !prev)}
-            className="bg-slate-200 text-black py-2 px-4 m-2 rounded"
+            className="bg-slate-200 text-black py-2 px-4 m-2 rounded w-full"
           >
-            {selectedCount ? `${selectedCount}` : "Total Questions"}
+            {selectedCount ? ` ${selectedCount}` : "Total Questions"}
           </button>
-          {isCountOpen && (
-            <div className="absolute top-full mt-2 bg-slate-100 text-black py-2 px-4 rounded shadow-md z-10">
+          {/* {isCountOpen && (
+            <div className="absolute top-full bg-slate-100 text-black py-2 px-4 rounded shadow-md z-10 w-full">
               {counts.map((item) => (
                 <button
                   key={item}
@@ -97,7 +211,33 @@ const TopicSelector = ({ setBigState }) => {
                     }));
                     setIsCountOpen(false);
                   }}
-                  className="block text-left py-2 px-4 w-60 hover:bg-gray-200"
+                  className={`block text-left py-2 px-4 w-full hover:bg-gray-200 ${
+                    counts === item ? "dot-before items-right" : "items-right"
+                  }`}
+                >
+                  {item}
+                </button>
+              ))}
+            </div>
+          )} */}
+          {isCountOpen && (
+            <div className="absolute top-full bg-slate-100 text-black py-2 px-4 rounded shadow-md z-10 w-full">
+              {counts.map((item) => (
+                <button
+                  key={item}
+                  onClick={() => {
+                    setSelectedCount(item);
+                    setBigState((a) => ({
+                      ...structuredClone(a),
+                      questionCount: item,
+                    }));
+                    setIsCountOpen(false);
+                  }}
+                  className={`block text-left py-2 px-4 w-full hover:bg-gray-200 ${
+                    selectedCount === item
+                      ? "dot-before items-right"
+                      : "items-right"
+                  }`}
                 >
                   {item}
                 </button>
@@ -106,6 +246,7 @@ const TopicSelector = ({ setBigState }) => {
           )}
         </div>
       </div>
+       
     </div>
   );
 };
