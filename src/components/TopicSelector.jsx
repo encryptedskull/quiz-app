@@ -14,8 +14,8 @@ const TopicSelector = ({ setBigState }) => {
   const [selectedDifficulty, setSelectedDifficulty] = useState(null);
   const [selectedCount, setSelectedCount] = useState(null);
 
-  const formatOption = (option, selectedOption) =>
-    option === selectedOption ? `• ${option}` : option;
+  // const formatOption = (option, selectedOption) =>
+  //   option === selectedOption ? `• ${option}` : option;
 
   return (
     <div className="bg-slate-50 w-full flex justify-center">
