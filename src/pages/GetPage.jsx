@@ -5,7 +5,6 @@ import { LuTimer } from "react-icons/lu";
 import { LuGraduationCap } from "react-icons/lu";
 export default function GetPage({ bigState, setBigState }) {
   const { loaded, topic, questionCount, getData, difficulty } = bigState;
-  // const [quizMounted, setQuizMounted] = useState(false);
 
   const fetchData = async () => {
     try {
@@ -59,8 +58,6 @@ export default function GetPage({ bigState, setBigState }) {
           questions: storedQuestions,
           loaded: true,
         }));
-        //   setQuestions(storedQuestions);
-
         console.log(loaded);
       }
     }
@@ -84,64 +81,10 @@ export default function GetPage({ bigState, setBigState }) {
       loaded: false,
     }));
   };
-  // useEffect(() => {
-  //   if (getData) {
-  //     setQuizMounted(true);
-  //   }
-  // }, [getData]);
-
   console.log(loaded);
   console.log(getData);
   return (
     <>
-      {/* <div className="bg-gray-50 min-h-screen flex flex-col justify-center items-center">
-        <div className=" w-500 flex flex-col items-start bg-slate-50 p-4 border border-slate-400 text-black rounded">
-          <h6 className="text-3xl my-3 text-gray-800 font-bold">
-            Your Quiz Detail is Here
-          </h6>
-          <h1 className="text-x text-gray-600 my-3 font-mono">
-            Topic:<span className="text-black"> {topic}</span>
-          </h1>
-          <h1 className="text-x text-gray-600 my-3 font-mono">
-            Difficulty:<span className="text-black"> {difficulty} </span>{" "}
-          </h1>
-          <h1 className="text-x text-gray-600 my-3 font-mono">
-            Total Questions:
-            <span className="text-black"> {questionCount} </span>{" "}
-          </h1>
-          <h1 className="text-x text-gray-600 my-3 font-mono">
-            Total Marks:<span className="text-black"> {questionCount} </span>{" "}
-          </h1>
-          <h1 className="text-x text-gray-600 my-3 font-mono">
-            Time Allowed:
-            <span className="text-black"> {questionCount} minutes </span>{" "}
-          </h1>
-          <div className="flex gap-x-28">
-            <button
-              className="bg-green-600 text-white py-2 px-4 m-2 rounded"
-              onClick={handleHome}
-            >
-              Home Page
-            </button>
-            {loaded ? (
-              <button
-                className="bg-green-600 text-white py-2 px-4 m-2 rounded"
-                onClick={handleAttempt}
-              >
-                Start Attempt
-              </button>
-            ) : (
-              <button
-                className="bg-gray-500 text-white py-2 px-4 m-2 rounded"
-                onClick={handleAttempt}
-              >
-                Please Wait..
-              </button>
-            )}
-          </div>
-        </div>
-      </div> */}
-
       <div className="bg-gray-50 min-h-screen flex flex-col justify-center items-center">
         <div className="flex flex-col items-center  p-4 border shadow-md  text-black rounded w-fit h-2/5 md:w-2/5 ">
           <h6 className="text-xl my-3 text-stone-800/100 font-medium font-mono">
